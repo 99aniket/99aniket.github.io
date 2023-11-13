@@ -1,42 +1,32 @@
-<html>    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-  <head>
-<title>Mahatma Gandhi Primary School</title>  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
-  </head>
-  <ul class="menu">
-    <li><a href=/index.html><b>Home</b></a></li>
-    <li><a href=/newpage.html><b>Table</b></a></li>
-    <li><a href=/Prices.html><b>Some unforgotable moments of our school</b></a></li>
-    <li><a href="#dreams"><b>My Dreams</b></a></li>
-    <li><a href=/Form.html><b>Contact Us</b></a></li>
-  </ul>
-</nav></br>
-<body>
-<h1><b>Mahatma Gandhi Primary School</b></h1>
-  <img src=/Images.html/20210828_116.jpg width="900" hight="9000"></br>
-  </br><p4></br><i>If you want the image you can hold and freely download image</i></p4></br>
- <p10> We are the awesome students of Mahatma Gandhi Primary School, Ahmedabad-Gujarat. We were learning html languagewhich comes under codingand by the help of it we have created this page on browser! <p10>
-  </br>
-  <p10>And today we are going to tell you the courses/ subjects of our school . .What is taught to us , What we learn in our school below is the table which is going to tell you the courses of our school<p10>
-  <br>
-  <p2>Our other website, please go throw these after you are done with this one</br></p2><a href="http://mgschool.in/about_us.html">http://mgschool.in/about_us.html"</a>
-  </br>
+ import pygame
 
-</body>
+# Initialize pygame
+pygame.init()
 
-<p6> Some brilliant teachers of our school:-</br>
-1.Rajeev Poddar - a teacher who teachs us current affairs , a teacher got nomanted for Bharat ratna , One of the best teachers in the India , He lives in kolkata but teachs us online.</br>
-2.Tushar Singh - A brilliant teaher teaches us History , Mathematics, Geography, Civics and lot. In his childhood he was a student in Rajeev sir's class </br>
-3.Radhika Shukla - First she was used to teach us Science now she works with different teachers of different schools for helping in teaching and even she had find our school as the best </br>
-And not just that there are many brilliant teachers in our school </p6>
-</br>
-<p5>Some reminds of competitions in which students of class 6 of last year had participated</p5></br><div class=All images are near each other and their are three images in one raw></div>
+# Create a window
+screen = pygame.display.set_mode((640, 480))
 
-  <p9>You can follow these brilliant students on Instagram by the link given below </p9></br>
-  <a href="https://instagram.com/_the_nerd__herd_?utm_medium=copy_link">https://instagram.com/_the_nerd__herd_?utm_medium=copy_link</a></br><p7>Thanks for coming to our webpage</p7>
- <p8>Please follow us on Insta and if you want to know which competitions are happening daily please put on a 'Hi' to the whatsapp link below</p8>
-  <!-- Project -->
-  <script src="main.js"></script>
-</html>
+# Create a heart
+heart = pygame.Surface((100, 100))
+heart.fill((255, 0, 0))
+
+# Draw the heart
+screen.blit(heart, (100, 100))
+
+# Write letters in between the heart
+for i in range(10):
+  pygame.draw.rect(screen, (0, 0, 0), (100 + i * 50, 100 + i * 20, 40, 20))
+  pygame.draw.rect(screen, (255, 255, 255), (100 + i * 50, 100 + i * 20, 40, 20), 1)
+  pygame.draw.text(screen, str(i + 1), (100 + i * 55, 100 + i * 25), (0, 0, 0))
+
+# Update the display
+pygame.display.update()
+
+# Run the game loop
+while True:
+  # Handle events
+  for event in pygame.event.get():
+    # Quit if the user closes the window
+    if event.type == pygame.QUIT:
+      pygame.quit()
+      exit()
