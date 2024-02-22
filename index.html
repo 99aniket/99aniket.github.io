@@ -1,32 +1,44 @@
- import pygame
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart with Letters</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(640, 480);
+            background(255);
+            noLoop();
 
-# Initialize pygame
-pygame.init()
+            // Create a heart shape
+            fill(255, 0, 0);
+            beginShape();
+            vertex(320, 240 + 50);
+            bezierVertex(320 + 50, 240 - 50, 320 + 100, 240 + 50, 320, 240 + 100);
+            bezierVertex(320 - 100, 240 + 50, 320 - 50, 240 - 50, 320, 240 + 50);
+            endShape(CLOSE);
 
-# Create a window
-screen = pygame.display.set_mode((640, 480))
+            // Write letters in between the heart
+            for (let i = 0; i < 10; i++) {
+                fill(0);
+                rect(100 + i * 50, 100 + i * 20, 40, 20);
+                noFill();
+                stroke(255);
+                rect(100 + i * 50, 100 + i * 20, 40, 20);
+                fill(0);
+                text(i + 1, 100 + i * 55, 100 + i * 25);
+            }
+        }
+    </script>
+</body>
+</html>
 
-# Create a heart
-heart = pygame.Surface((100, 100))
-heart.fill((255, 0, 0))
-
-# Draw the heart
-screen.blit(heart, (100, 100))
-
-# Write letters in between the heart
-for i in range(10):
-  pygame.draw.rect(screen, (0, 0, 0), (100 + i * 50, 100 + i * 20, 40, 20))
-  pygame.draw.rect(screen, (255, 255, 255), (100 + i * 50, 100 + i * 20, 40, 20), 1)
-  pygame.draw.text(screen, str(i + 1), (100 + i * 55, 100 + i * 25), (0, 0, 0))
-
-# Update the display
-pygame.display.update()
-
-# Run the game loop
-while True:
-  # Handle events
-  for event in pygame.event.get():
-    # Quit if the user closes the window
-    if event.type == pygame.QUIT:
-      pygame.quit()
-      exit()
